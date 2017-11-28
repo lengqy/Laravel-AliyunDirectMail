@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\ClientException;
 class DirectMailTransport extends Transport
 {
     const API_URL = 'https://dm.aliyuncs.com/';
+    
     private $access_key_id;
     private $access_secret;
     private $replay_to_address;
