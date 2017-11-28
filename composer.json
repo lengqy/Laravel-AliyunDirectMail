@@ -1,0 +1,22 @@
+{
+    "name": "cherrytools/directmail",
+    "description": "aliyun direct mail for laravel.",
+    "keywords": ["directmail"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cherry",
+            "email": "cherrytools@yeah.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cherry\\DirectMail\\": "src/"
+        }
+    }
+}
