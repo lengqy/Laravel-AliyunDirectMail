@@ -32,7 +32,7 @@ DIRECT_MAIL_SECRET=         # AccessKeySecret
 ```bash
 DIRECT_MAIL_REPLAY_TO=      # ReplyToAddress
 DIRECT_MAIL_ADDRESS_TYPE=   # AddressType
-DIRECT_MAIL_REGION=         # ToAddress
+DIRECT_MAIL_REGION=         # RegionId
 DIRECT_MAIL_CLICK_TRACE=    # ClickTrace
 ```
 在Laravel 5.5或更高版本中，该软件包将被自动发现，您可以跳过以下步骤。
