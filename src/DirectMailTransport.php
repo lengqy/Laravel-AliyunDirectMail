@@ -10,27 +10,26 @@ use GuzzleHttp\Exception\ClientException;
 class DirectMailTransport extends Transport
 {
     const API_URL = 'https://dm.aliyuncs.com/';
+    private $access_key_id;
+    private $access_secret;
+    private $replay_to_address;
+    private $address_type;
+    private $region;
+    private $click_trace;
 
-	private $access_key_id;
-	private $access_secret;
-	private $replay_to_address;
-	private $address_type;
-	private $region;
-	private $click_trace;
+    public function __construct(array $config)
+    {
+        $this->access_key_id     = $config['access_key_id'];
+        $this->access_secret     = $config['access_secret'];
+        $this->replay_to_address = $config['replay_to_address'];
+        $this->address_type      = $config['address_type'];
+        $this->region            = $config['region'];
+        $this->click_trace       = $config['click_trace'];
+    }
 
-	public function __construct(array $config)
-	{
-		$this->access_key_id     = $config['access_key_id'];
-		$this->access_secret     = $config['access_secret'];
-		$this->replay_to_address = $config['replay_to_address'];
-		$this->address_type      = $config['address_type'];
-		$this->region            = $config['region'];
-		$this->click_trace       = $config['click_trace'];
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
+    /**
+     * {@inheritdoc}
+     */
     public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
         return $this->SingleSendMail($message);
