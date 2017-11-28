@@ -18,5 +18,13 @@
         "psr-4": {
             "Cherry\\DirectMail\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cherry\\DirectMail\\DirectMailTransportProvider"
+            ]
+        }
     }
+
 }

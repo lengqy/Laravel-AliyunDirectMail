@@ -3,7 +3,7 @@
 namespace Cherry\DirectMail;
 
 use GuzzleHttp\Client;
-use Swift_Mime_Message;
+use Swift_Mime_SimpleMessage;
 use Illuminate\Mail\Transport\Transport;
 use GuzzleHttp\Exception\ClientException;
 
@@ -31,17 +31,17 @@ class DirectMailTransport extends Transport
 	/**
 	 * {@inheritdoc}
 	 */
-    public function send(Swift_Mime_Message $message, &$failedRecipients = null)
+    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
         return $this->SingleSendMail($message);
     }
 
     /**
      * 单一发信接口
-     * @param  Swift_Mime_Message $message
+     * @param  Swift_Mime_SimpleMessage $message
      * @return array
      */
-    private function SingleSendMail(Swift_Mime_Message $message)
+    private function SingleSendMail(Swift_Mime_SimpleMessage $message)
     {
     	$params = [];
         $params['Action']         = 'SingleSendMail';
@@ -70,30 +70,30 @@ class DirectMailTransport extends Transport
 
     /**
      * 获取发信人
-     * @param  Swift_Mime_Message $message
+     * @param  Swift_Mime_SimpleMessage $message
      * @return string
      */
-    private function getAccountName(Swift_Mime_Message $message)
+    private function getAccountName(Swift_Mime_SimpleMessage $message)
     {
         return head(array_keys($message->getFrom()));
     }
 
     /**
      * 获取发信人
-     * @param  Swift_Mime_Message $message
+     * @param  Swift_Mime_SimpleMessage $message
      * @return string
      */
-    private function getAlisa(Swift_Mime_Message $message)
+    private function getAlisa(Swift_Mime_SimpleMessage $message)
     {
         return head(array_values($message->getFrom()));
     }
 
     /**
      * 获取发信人
-     * @param  Swift_Mime_Message $message
+     * @param  Swift_Mime_SimpleMessage $message
      * @return string
      */
-    private function getToAddress(Swift_Mime_Message $message)
+    private function getToAddress(Swift_Mime_SimpleMessage $message)
     {
         return implode(',', array_keys($message->getTo()));
     }
